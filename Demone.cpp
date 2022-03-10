@@ -1,15 +1,5 @@
 #include "Demone.hpp"
-class Demone
-{
-
-public:
-    int stamina_necessaria;
-    int turni_recupero_stamina;
-    int stamina_recuperata;
-    int turni_fragmenti;
-    vector<int> fragmenti_recuperati;
-
-    Demone(int _stamina_necessaria,
+    Demone::Demone(int _stamina_necessaria,
            int _turni_recupero_stamina,
            int _stamina_recuperata,
            int _turni_fragmenti,
@@ -22,4 +12,3 @@ public:
         turni_fragmenti = _turni_fragmenti;
         fragmenti_recuperati = _fragmenti_recuperati;
     }
-};
