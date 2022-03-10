@@ -7,7 +7,6 @@
 #include <iostream>
 #include <string_view>
 #include "Demone.hpp"
-#include "Pandora.hpp"
 #include "GameManager.hpp"
 using namespace std;
 int read_input(char* input_file, Pandora &p, vector<Demone> &vec) {
@@ -48,7 +47,8 @@ void play(GameManager gm, Pandora pandora, vector<Demone> demons)  {
         }
         gm.NextTurn(pandora);
     }
-     
+    for (auto it : demons_list)
+        cout << it <<"\n";
     
 }
 int main(int argc, char** argv)
