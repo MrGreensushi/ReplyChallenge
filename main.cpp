@@ -17,6 +17,7 @@ int read_input(char* input_file, Pandora &p, vector<Demone> &vec) {
     p = Pandora(stamina,max_stamina,0);
    for( int i=0;i<Nd;i++)
    {
+       int id=0;
        int stamina_to_kill,recovery_turns, stamina_recovered,fragment_turns;
        file >> stamina_to_kill>> recovery_turns>> stamina_recovered>> fragment_turns;
        vector<int> fragments_per_turn;
@@ -26,8 +27,8 @@ int read_input(char* input_file, Pandora &p, vector<Demone> &vec) {
            file >> frag;
            fragments_per_turn.push_back(frag);
        }
-       vec.push_back(Demone(stamina_to_kill,recovery_turns,stamina_recovered,fragment_turns,fragments_per_turn));
-
+       vec.push_back(Demone(stamina_to_kill,recovery_turns,stamina_recovered,fragment_turns,fragments_per_turn,id));
+       id++;
    }
    return Nt;
 }
@@ -35,8 +36,20 @@ void play(GameManager gm, Pandora pandora, vector<Demone> demons)  {
     vector<int> demons_list;
     auto cmp = [](Demone a, Demone b) { return a.getCost() < b.getCost();};
     sort(demons.begin(),demons.end(),cmp);
-    int turn=0
-    while(gm.turno_attuale<  gm.max_turni)
+    while(gm.turno_attuale < gm.max_turni) {
+        for(int i=0;i<demons.size();i++)
+        {
+            if(pandora.stamina >= demons[i].stamina_necessaria){
+                gm.UpdateGuadagnoTurno(demons[i].fragmenti_recuperati,demons[i].stamina_recuperata,demons[i].turni_recupero_stamina);
+                demons_list.push_back(demons[i].id);
+                demons.erase(next(demons.begin(),i));
+                break;
+            }
+        }
+        gm.NextTurn(pandora);
+    }
+     
+    
 }
 int main(int argc, char** argv)
 {
