@@ -1,7 +1,11 @@
 class Demone
 {
 public:
-    Demone();
+    Demone(int _stamina_necessaria,
+           int _turni_recupero_stamina,
+           int _stamina_recuperata,
+           int _turni_fragmenti,
+           int _fragmenti_recuperati);
     int stamina_necessaria;
     int turni_recupero_stamina;
     int stamina_recuperata;
