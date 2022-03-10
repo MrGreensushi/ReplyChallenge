@@ -1,3 +1,5 @@
+#include "Pandora.hpp"
+
 class Pandora
 {
 public:
