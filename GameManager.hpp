@@ -19,5 +19,5 @@ public:
     GameManager(int _max_turni);
     ~GameManager();
     void UpdateGuadagnoTurno(vector<int> fragments, int stamina, int turno_stamina);
-    bool NextTurn(Pandora protagonist);
+    bool NextTurn(Pandora &protagonist);
 };

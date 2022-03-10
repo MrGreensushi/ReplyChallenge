@@ -33,20 +33,22 @@ void GameManager::UpdateGuadagnoTurno(vector<int> fragments, int stamina, int tu
     {
         guadagno_turno[turno_stamina + turno_attuale].stamina_recupero += stamina;
     }
-
     return;
 }
 
-bool GameManager::NextTurn(Pandora protagonist)
+bool GameManager::NextTurn(Pandora &protagonist)
 {
     turno_attuale++;
     if (turno_attuale >= max_turni)
         return false;
     protagonist.stamina += guadagno_turno[turno_attuale].stamina_recupero;
     if (protagonist.stamina > protagonist.max_stamina)
+    {
         protagonist.stamina = protagonist.max_stamina;
-    protagonist.fragmenti += guadagno_turno[turno_attuale].fragmenti_guadagnati;
+    }
+        
+    protagonist.fragmenti = protagonist.fragmenti + guadagno_turno[turno_attuale].fragmenti_guadagnati;
 
-    cout << "Turno: " << turno_attuale << " Stamina: " << protagonist.stamina << " fragmenti: " << protagonist.fragmenti;
+   // cout << "Turno: " << turno_attuale << " Stamina: " << protagonist.stamina << " fragmenti: " << protagonist.fragmenti << " FG "<<guadagno_turno[turno_attuale].fragmenti_guadagnati << " SR " <<guadagno_turno[turno_attuale].stamina_recupero<<"\n";
     return true;
 }
