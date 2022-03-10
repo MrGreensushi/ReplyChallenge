@@ -46,5 +46,7 @@ bool GameManager::NextTurn(Pandora protagonist)
     if (protagonist.stamina > protagonist.max_stamina)
         protagonist.stamina = protagonist.max_stamina;
     protagonist.fragmenti += guadagno_turno[turno_attuale].fragmenti_guadagnati;
+
+    cout << "Turno: " << turno_attuale << " Stamina: " << protagonist.stamina << " fragmenti: " << protagonist.fragmenti;
     return true;
 }
