@@ -14,14 +14,14 @@ Demone::Demone(int _stamina_necessaria,
     fragmenti_recuperati = _fragmenti_recuperati;
     id = _id;
 }
-int Demone::getCost()
+double Demone::getCost()
     {
-        long cost = 0;
+        double cost = 0;
         cost = (this->stamina_recuperata - this->stamina_necessaria)/this->turni_recupero_stamina;
         double sum = 0;
         for (auto it : this->fragmenti_recuperati)
             sum+=it;
         sum /=this->fragmenti_recuperati.size();
-        cost += (int)sum;
+        cost += sum;
         return cost;
     }
