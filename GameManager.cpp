@@ -17,3 +17,22 @@ GameManager::GameManager(int _max_turni)
 GameManager::~GameManager()
 {
 }
+
+void GameManager::UpdateGuadagnoTurno(vector<int> fragments, int stamina, int turno_stamina)
+{
+    for (int i = 0; i < fragments.size(); i++)
+    {
+        int turn = i + turno_attuale + 1;
+        if (turn < max_turni)
+        {
+            guadagno_turno[turn].fragmenti_guadagnati += fragments[i];
+        }
+    }
+
+    if (turno_stamina + turno_attuale < max_turni)
+    {
+        guadagno_turno[turno_stamina + turno_attuale].stamina_recupero += stamina;
+    }
+
+    return;
+}

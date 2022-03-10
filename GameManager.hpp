@@ -1,5 +1,6 @@
 #include <map>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class GameManager
@@ -16,4 +17,5 @@ public:
     int max_turni;
     GameManager(int _max_turni);
     ~GameManager();
+    void UpdateGuadagnoTurno(vector<int> fragments, int stamina, int turno_stamina);
 };
