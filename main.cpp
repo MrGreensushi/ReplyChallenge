@@ -1,10 +1,16 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
+#include <functional>
+#include <array>
+#include <iostream>
+#include <string_view>
 #include "Demone.hpp"
 #include "Pandora.hpp"
+#include "GameManager.hpp"
 using namespace std;
-int read_input(char* input_file, Pandora &p, vector<Demone> &vec){
+int read_input(char* input_file, Pandora &p, vector<Demone> &vec) {
     int stamina, max_stamina, Nt,Nd;
    ifstream file(input_file);  
    file >> stamina>> max_stamina>> Nt>> Nd;
@@ -25,7 +31,13 @@ int read_input(char* input_file, Pandora &p, vector<Demone> &vec){
    }
    return Nt;
 }
-
+void play(GameManager gm, Pandora pandora, vector<Demone> demons)  {
+    vector<int> demons_list;
+    auto cmp = [](Demone a, Demone b) { return a.getCost() < b.getCost();};
+    sort(demons.begin(),demons.end(),cmp);
+    int turn=0
+    while(gm.turno_attuale<  gm.max_turni)
+}
 int main(int argc, char** argv)
 {
     if(argc !=2)
@@ -34,10 +46,6 @@ int main(int argc, char** argv)
     Pandora pandora(0,0,0);
     vector<Demone> demons;
     int Nt=read_input(file,pandora,demons);
-    cout<< pandora.stamina<<" " << pandora.max_stamina<<"\n";
-    for(int i=0;i<demons.size();i++)
-    {
-        cout<< demons[i].stamina_necessaria <<" "<< demons[i].stamina_recuperata<< " ";
-        cout << demons[i].fragmenti_recuperati[0] << "\n";
-    }
+    GameManager gm(Nt);
+    play(gm,pandora,demons);
 }

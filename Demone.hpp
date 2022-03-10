@@ -10,6 +10,7 @@ public:
            int _stamina_recuperata,
            int _turni_fragmenti,
            vector<int> _fragmenti_recuperati);
+    int getCost();
     int stamina_necessaria;
     int turni_recupero_stamina;
     int stamina_recuperata;

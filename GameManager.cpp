@@ -8,10 +8,10 @@ GameManager::GameManager(int _max_turni)
         guadagno_turno.insert({i, {0, 0}});
     }
 
-    for (int i = 0; i < guadagno_turno.size(); i++)
+    /*for (int i = 0; i < guadagno_turno.size(); i++)
     {
-        cout << i << " Stamina: " << guadagno_turno[i].stamina_recupero << " Fragmenti: " << guadagno_turno[i].fragmenti_guadagnati;
-    }
+        cout << i << " Stamina: " << guadagno_turno[i].stamina_recupero << " Fragmenti: " << guadagno_turno[i].fragmenti_guadagnati <<"\n";
+    }*/
 }
 
 GameManager::~GameManager()
