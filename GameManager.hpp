@@ -1,6 +1,7 @@
 #include <map>
 #include <iostream>
 #include <vector>
+#include "Pandora.hpp"
 using namespace std;
 
 class GameManager
@@ -18,4 +19,5 @@ public:
     GameManager(int _max_turni);
     ~GameManager();
     void UpdateGuadagnoTurno(vector<int> fragments, int stamina, int turno_stamina);
+    bool NextTurn(Pandora protagonist);
 };

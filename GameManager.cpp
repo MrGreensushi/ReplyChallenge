@@ -36,3 +36,15 @@ void GameManager::UpdateGuadagnoTurno(vector<int> fragments, int stamina, int tu
 
     return;
 }
+
+bool GameManager::NextTurn(Pandora protagonist)
+{
+    turno_attuale++;
+    if (turno_attuale >= max_turni)
+        return false;
+    protagonist.stamina += guadagno_turno[turno_attuale].stamina_recupero;
+    if (protagonist.stamina > protagonist.max_stamina)
+        protagonist.stamina = protagonist.max_stamina;
+    protagonist.fragmenti += guadagno_turno[turno_attuale].fragmenti_guadagnati;
+    return true;
+}
